@@ -1,4 +1,4 @@
-package org.sujan.stockflow_backend.users.dto;
+package org.sujan.stockflow_backend.dto;
 
 public class ProductResponse {
     private Long id;

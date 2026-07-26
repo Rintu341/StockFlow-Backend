@@ -1,10 +1,10 @@
-package org.sujan.stockflow_backend.users.controller;
+package org.sujan.stockflow_backend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import org.sujan.stockflow_backend.users.entity.Product;
-import org.sujan.stockflow_backend.users.services.ProductService;
+import org.sujan.stockflow_backend.entity.Product;
+import org.sujan.stockflow_backend.service.ProductService;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package org.sujan.stockflow_backend.users.dto;
+package org.sujan.stockflow_backend.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

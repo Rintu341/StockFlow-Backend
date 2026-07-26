@@ -1,36 +1,10 @@
-package org.sujan.stockflow_backend.users.entity;
+package org.sujan.stockflow_backend.dto;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "products")
-public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class ProductRequest {
     private String name;
     private String category;
     private double price;
     private Integer stockQuantity;
-
-    public Product() {
-    }
-
-    public Product(String name, String category, double price, Integer stockQuantity) {
-        this.name = name;
-        this.category = category;
-        this.price = price;
-        this.stockQuantity = stockQuantity;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

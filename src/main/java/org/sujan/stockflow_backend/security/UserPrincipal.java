@@ -3,7 +3,7 @@ package org.sujan.stockflow_backend.security;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.sujan.stockflow_backend.users.entity.User;
+import org.sujan.stockflow_backend.entity.User;
 
 import java.util.Collection;
 import java.util.Collections;

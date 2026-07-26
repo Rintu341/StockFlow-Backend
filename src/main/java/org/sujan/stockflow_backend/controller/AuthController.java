@@ -1,15 +1,15 @@
-package org.sujan.stockflow_backend.users.controller;
+package org.sujan.stockflow_backend.controller;
 
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.sujan.stockflow_backend.users.dto.AuthResponse;
-import org.sujan.stockflow_backend.users.dto.LoginRequest;
-import org.sujan.stockflow_backend.users.dto.RegisterRequest;
-import org.sujan.stockflow_backend.users.entity.User;
-import org.sujan.stockflow_backend.users.services.UserService;
+import org.sujan.stockflow_backend.dto.AuthResponse;
+import org.sujan.stockflow_backend.dto.LoginRequest;
+import org.sujan.stockflow_backend.dto.RegisterRequest;
+import org.sujan.stockflow_backend.entity.User;
+import org.sujan.stockflow_backend.service.UserService;
 
 @RestController
 @RequestMapping("api/auth")

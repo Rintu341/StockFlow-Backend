@@ -11,8 +11,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-import org.sujan.stockflow_backend.users.services.JwtService;
-import org.sujan.stockflow_backend.users.services.MyUserDetailsService;
+import org.sujan.stockflow_backend.service.JwtService;
+import org.sujan.stockflow_backend.service.MyUserDetailsService;
 
 import java.io.IOException;
 

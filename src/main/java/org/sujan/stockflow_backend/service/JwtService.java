@@ -1,4 +1,4 @@
-package org.sujan.stockflow_backend.users.services;
+package org.sujan.stockflow_backend.service;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

@@ -1,4 +1,4 @@
-package org.sujan.stockflow_backend.users.entity;
+package org.sujan.stockflow_backend.entity;
 
 import jakarta.persistence.*;
 

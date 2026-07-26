@@ -1,7 +1,7 @@
-package org.sujan.stockflow_backend.users.services;
+package org.sujan.stockflow_backend.service;
 
-import org.sujan.stockflow_backend.users.entity.User;
-import org.sujan.stockflow_backend.users.repository.UserRepository;
+import org.sujan.stockflow_backend.entity.User;
+import org.sujan.stockflow_backend.repository.UserRepository;
 import org.sujan.stockflow_backend.security.UserPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

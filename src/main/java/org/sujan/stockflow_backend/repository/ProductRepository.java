@@ -1,8 +1,8 @@
-package org.sujan.stockflow_backend.users.repository;
+package org.sujan.stockflow_backend.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import org.sujan.stockflow_backend.users.entity.Product;
+import org.sujan.stockflow_backend.entity.Product;
 
 
 @Repository

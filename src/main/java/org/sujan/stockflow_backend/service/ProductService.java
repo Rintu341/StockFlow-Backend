@@ -1,11 +1,11 @@
-package org.sujan.stockflow_backend.users.services;
+package org.sujan.stockflow_backend.service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.sujan.stockflow_backend.users.entity.Product;
+import org.sujan.stockflow_backend.entity.Product;
 import org.sujan.stockflow_backend.exception.ProductNotFoundException;
-import org.sujan.stockflow_backend.users.repository.ProductRepository;
+import org.sujan.stockflow_backend.repository.ProductRepository;
 
 import java.util.List;
 
