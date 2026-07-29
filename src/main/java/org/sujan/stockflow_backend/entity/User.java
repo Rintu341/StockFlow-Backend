@@ -19,13 +19,18 @@ public class User {
     @Column(nullable = false)
     private String password; // stored as a BCrypt HASH, never plain text
 
+    @Enumerated(EnumType.STRING) // To store the Role as a string in DB
+    @Column(nullable = false)
+    private Role role;
+
     public User() {
     }
 
-    public User(String username, String email, String password) {
+    public User(String username, String email, String password, Role role) {
         this.username = username;
         this.email = email;
         this.password = password;
+        this.role = role;
     }
 
     public Long getId() {
@@ -58,5 +63,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

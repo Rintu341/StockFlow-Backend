@@ -8,6 +8,9 @@ import org.sujan.stockflow_backend.entity.User;
 import java.util.Collection;
 import java.util.Collections;
 
+/**
+ * 	Adapts your User entity into the shape Spring Security expects
+ */
 public class UserPrincipal implements UserDetails {
 
     private final User user;
@@ -23,8 +26,7 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        // Placeholder for now — real roles come in Step 6/7 once you add a Role field to User
-        return Collections.singleton(new SimpleGrantedAuthority("USER"));
+        return Collections.singleton(new SimpleGrantedAuthority("ROLE_"+ user.getRole().name()));
     }
 
     @Override
