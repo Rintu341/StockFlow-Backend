@@ -24,7 +24,10 @@ public class RegisterRequest {
     @NotNull(message = "Role is require")
     private Role role;
 
-    // getters and setters stay the same
+
+    @NotNull(message = "Tenant ID is required")
+    private Long tenantId;
+
     public String getUsername() { return username; }
     public void setUsername(String username) { this.username = username; }
     public String getEmail() { return email; }
@@ -33,4 +36,12 @@ public class RegisterRequest {
     public void setPassword(String password) { this.password = password; }
     public Role getRole() { return role; }
     public void setRole(Role role) { this.role = role; }
+
+    public Long getTenantId() {
+        return tenantId;
+    }
+
+    public void setTenantId(Long tenantId) {
+        this.tenantId = tenantId;
+    }
 }

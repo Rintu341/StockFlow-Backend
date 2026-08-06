@@ -14,6 +14,9 @@ public class Product {
     private double price;
     private Integer stockQuantity;
 
+    @Column(name = "tenant_id", nullable = false)
+    private Long tenantId;
+
     public Product() {
     }
 
@@ -62,5 +65,13 @@ public class Product {
 
     public void setStockQuantity(Integer stockQuantity) {
         this.stockQuantity = stockQuantity;
+    }
+
+    public Long getTenantId() {
+        return tenantId;
+    }
+
+    public void setTenantId(Long tenantId) {
+        this.tenantId = tenantId;
     }
 }

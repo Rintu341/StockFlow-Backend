@@ -23,14 +23,19 @@ public class User {
     @Column(nullable = false)
     private Role role;
 
+
+    @Column(name = "tenant_id", nullable = false)
+    private Long tenantId;
+
     public User() {
     }
 
-    public User(String username, String email, String password, Role role) {
+    public User(String username, String email, String password, Role role,Long tenantId) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.role = role;
+        this.tenantId = tenantId;
     }
 
     public Long getId() {
@@ -71,5 +76,13 @@ public class User {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public Long getTenantId(){
+        return tenantId;
+    }
+
+    public void setTenantId(Long tenantId){
+        this.tenantId = tenantId;
     }
 }
