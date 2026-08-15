@@ -12,36 +12,38 @@ public class RegisterRequest {
     @NotBlank(message = "Email is required")
     @Email(message = "Email must be valid")
     private String email;
+    @NotNull(message = "Role is require")
+    private Role role;
+    public String getUsername() { return username; }
+    public void setUsername(String username) { this.username = username; }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
 
-    @NotBlank(message = "Password is required")
+
+    public Role getRole() { return role; }
+    public void setRole(Role role) { this.role = role; }
+
+    /*@NotBlank(message = "Password is required")
     @Size(min = 8, message = "Password must be at least 8 characters")
     @Pattern(
             regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@#$%^&+=!]).*$",
             message = "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
     )
-    private String password;
+    private String password;*/
 
-    @NotNull(message = "Role is require")
-    private Role role;
+   /* @NotNull(message = "Tenant ID is required")
+    private Long tenantId;*/
 
 
-    @NotNull(message = "Tenant ID is required")
-    private Long tenantId;
+    /*public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }*/
 
-    public String getUsername() { return username; }
-    public void setUsername(String username) { this.username = username; }
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
-    public String getPassword() { return password; }
-    public void setPassword(String password) { this.password = password; }
-    public Role getRole() { return role; }
-    public void setRole(Role role) { this.role = role; }
 
-    public Long getTenantId() {
+    /*public Long getTenantId() {
         return tenantId;
     }
 
     public void setTenantId(Long tenantId) {
         this.tenantId = tenantId;
-    }
+    }*/
 }

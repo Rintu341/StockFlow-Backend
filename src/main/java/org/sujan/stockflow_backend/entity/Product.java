@@ -1,6 +1,9 @@
 package org.sujan.stockflow_backend.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Positive;
+import org.springframework.beans.factory.annotation.Value;
 
 @Entity
 @Table(name = "products")
@@ -8,10 +11,15 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
     private String category;
+
+    @Column(nullable = false)
+    @Positive(message = "Price must be a positive.")
     private double price;
+
     private Integer stockQuantity;
 
     @Column(name = "tenant_id", nullable = false)

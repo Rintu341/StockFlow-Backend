@@ -10,19 +10,21 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = false, nullable = false)
     private String username;
 
     @Column(unique = true, nullable = false)
     private String email;
 
     @Column(nullable = false)
-    private String password; // stored as a BCrypt HASH, never plain text
+    private String password;
 
-    @Enumerated(EnumType.STRING) // To store the Role as a string in DB
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
 
+    @Column(nullable = false)
+    private boolean mustChangePassword;
 
     @Column(name = "tenant_id", nullable = false)
     private Long tenantId;
@@ -84,5 +86,14 @@ public class User {
 
     public void setTenantId(Long tenantId){
         this.tenantId = tenantId;
+    }
+
+
+    public boolean isMustChangePassword() {
+        return mustChangePassword;
+    }
+
+    public void setMustChangePassword(boolean mustChangePassword) {
+        this.mustChangePassword = mustChangePassword;
     }
 }
