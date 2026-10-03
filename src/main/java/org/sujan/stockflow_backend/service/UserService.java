@@ -1,6 +1,7 @@
 package org.sujan.stockflow_backend.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -9,6 +10,7 @@ import org.sujan.stockflow_backend.entity.Role;
 import org.sujan.stockflow_backend.entity.Tenant;
 import org.sujan.stockflow_backend.entity.User;
 import org.sujan.stockflow_backend.exception.InvalidCredentialsException;
+import org.sujan.stockflow_backend.exception.TenantNotFoundException;
 import org.sujan.stockflow_backend.exception.UserAlreadyExistsException;
 import org.sujan.stockflow_backend.repository.TenantRepository;
 import org.sujan.stockflow_backend.repository.UserRepository;
@@ -30,6 +32,9 @@ public class UserService {
 
     @Autowired
     private JwtService jwtService;
+
+    @Value("${jwt.expiration}")
+    private long jwtExpiration;
 
     private static final String PASSWORD_CHARS =
             "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789!@#$%";
@@ -92,7 +97,7 @@ public class UserService {
         return new NewUserResponse(user.getUsername(), user.getEmail(), tempPassword);
     }
 
-    public String login(LoginRequest request) {
+    public AuthResponse login(LoginRequest request) {
         User user = userRepository.findByEmail(request.getEmail())
                 .orElseThrow(() -> new InvalidCredentialsException("Invalid email or password"));
 
@@ -101,7 +106,12 @@ public class UserService {
             throw new InvalidCredentialsException("Invalid email or password");
         }
 
-        return jwtService.generateToken(user.getEmail());
+        String token =  jwtService.generateToken(user.getEmail());
+
+        String tenantName = tenantRepository.findNameById(user.getTenantId())
+                .orElseThrow(() -> new TenantNotFoundException("Tenant not found"));
+
+        return new AuthResponse(user.getId().toString(),user.getUsername(),user.getEmail(), user.getRole().name(), user.getTenantId().toString(),tenantName, user.isMustChangePassword(),jwtExpiration,"Bearer",token);
     }
 
     public void changePassword(ChangePasswordRequest request) {

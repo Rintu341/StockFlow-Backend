@@ -33,8 +33,8 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) {
-        String token = userService.login(request);
-        return ResponseEntity.ok(new AuthResponse(token));
+//        String token = ;
+        return ResponseEntity.ok(userService.login(request));
     }
 
     @PutMapping("/change-password")
