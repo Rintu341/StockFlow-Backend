@@ -32,7 +32,7 @@ public class OrderService {
 
     public Order createOrder(CreateOrderRequest request) {
         Long tenantId = getCurrentTenantId();
-        Order order = new Order(tenantId);
+        Order order = new Order(tenantId, request.getCustomerName().trim());
 
         for (OrderItemRequest itemRequest : request.getItems()) {
             Product product = productRepository.findById(itemRequest.getProductId())
