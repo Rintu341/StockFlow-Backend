@@ -9,9 +9,7 @@ import org.sujan.stockflow_backend.dto.*;
 import org.sujan.stockflow_backend.entity.Role;
 import org.sujan.stockflow_backend.entity.Tenant;
 import org.sujan.stockflow_backend.entity.User;
-import org.sujan.stockflow_backend.exception.InvalidCredentialsException;
-import org.sujan.stockflow_backend.exception.TenantNotFoundException;
-import org.sujan.stockflow_backend.exception.UserAlreadyExistsException;
+import org.sujan.stockflow_backend.exception.*;
 import org.sujan.stockflow_backend.repository.TenantRepository;
 import org.sujan.stockflow_backend.repository.UserRepository;
 import org.sujan.stockflow_backend.security.UserPrincipal;
@@ -119,9 +117,11 @@ public class UserService {
                 .getAuthentication().getPrincipal();
         User user = principal.getUser();
 
-        boolean currentMatches = passwordEncoder.matches(request.getCurrentPassword(), user.getPassword());
-        if (!currentMatches) {
-            throw new InvalidCredentialsException("Current password is incorrect");
+        if (!passwordEncoder.matches(request.getCurrentPassword(), user.getPassword())) {
+            throw new InvalidCurrentPasswordException("Current password is incorrect");
+        }
+        if (passwordEncoder.matches(request.getNewPassword(), user.getPassword())) {
+            throw new PasswordReuseException("New password must be different from the current one");
         }
 
         user.setPassword(passwordEncoder.encode(request.getNewPassword()));

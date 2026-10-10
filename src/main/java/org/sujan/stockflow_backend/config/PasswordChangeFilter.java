@@ -8,6 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
+import org.sujan.stockflow_backend.security.SecurityErrorWriter;
 import org.sujan.stockflow_backend.security.UserPrincipal;
 
 import java.io.IOException;
@@ -29,11 +30,8 @@ public class PasswordChangeFilter extends OncePerRequestFilter {
             boolean isChangePasswordRequest = request.getRequestURI().equals(CHANGE_PASSWORD_PATH);
 
             if (principal.getUser().isMustChangePassword() && !isChangePasswordRequest) {
-                response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-                response.setContentType("application/json");
-                response.getWriter().write(
-                    "{\"error\": \"PASSWORD_CHANGE_REQUIRED\", \"message\": \"You must change your temporary password before continuing.\"}"
-                );
+                SecurityErrorWriter.write(response, 403, "PASSWORD_CHANGE_REQUIRED",
+                        "Please change your temporary password to continue.");
                 return; // stop here — do NOT call filterChain.doFilter()
             }
         }
